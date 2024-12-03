@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+    <init>
+        <log text="CybSDK Android UPL initialization"/>
+    </init>
+
+    <prebuildCopies>
+        <copyDir src="$S(PluginDir)/Private/Java" dst="$S(BuildDir)/src/com/cyberith/unrealengineble" />
+    </prebuildCopies>
+
+    <proguardAdditions>
+        <insert>
+            -dontwarn com.cyberith.**
+            -keep class com.cyberith.** { *; }
+            -keep interface com.cyberith.** { *; }
+        </insert>
+    </proguardAdditions>
+
+    <androidManifestUpdates>
+		<addElements tag="queries">
+			<package android:name="com.cyberith.calibrationprovider"/>
+			<provider android:authorities="com.cyberith.provider.CyberithCalibrationDataProvider" />
+		</addElements>
+        <!-- Add permissions -->
+        <addPermission android:name="android.permission.BLUETOOTH"
+			android:maxSdkVersion="30" />
+        <addPermission android:name="android.permission.BLUETOOTH_ADMIN"
+			android:maxSdkVersion="30" />
+        <addPermission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+        <addFeature android:name="android.hardware.bluetooth_le" android:required="false" />
+    </androidManifestUpdates>
+	
+	<!--<minimumSDKAPI>
+        <insertValue value="32"/>
+        <insertNewline/>
+    </minimumSDKAPI>-->
+</root>

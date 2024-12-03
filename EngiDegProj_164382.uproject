@@ -32,6 +32,10 @@
 				"Android",
 				"VisionOS"
 			]
+		},
+		{
+			"Name": "CybSDK_Plugin",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
